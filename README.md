@@ -44,6 +44,13 @@ yarn add @teckel/vue-barcode-reader
 
 The Vue Barcode Reader works out of the box by just including it.
 
+NOTE: If working with Typescript, you will need to add .d.ts module file.
+
+Create vue-barcode-reader.d.ts in your /src/types/ or in root and add this line to your file:
+```
+declare module '@teckel/vue-barcode-reader'
+```
+
 ### Scanning from Video Camera
 
 Once a stream from the users camera is loaded, it's displayed and continuously scanned for barcodes. Results are indicated by the decode event.
@@ -58,7 +65,7 @@ import { StreamBarcodeReader } from '@teckel/vue-barcode-reader'
 const decodedText = ref('')
 
 const onDecode = (result) => {
-  decodedText = result
+  decodedText.value = result
 }
 
 const onLoaded = () => {
